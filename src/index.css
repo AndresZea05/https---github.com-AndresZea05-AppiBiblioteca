@@ -1,0 +1,17 @@
+body, #root {
+  min-height: 100vh;
+  min-width: 100vh;
+  position: relative;
+  background-color: whitesmoke;
+  
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+.navbar{
+  margin-bottom: 1rem;
+  min-width: 100vh;
+}
