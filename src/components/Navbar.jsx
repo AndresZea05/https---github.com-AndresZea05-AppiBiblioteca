@@ -27,11 +27,11 @@ const Navbar = (props) => {
         ) : null}
 
         {props.firebaseUser !== null  && props.firebaseRol === 'Usuario' ? (
-          <Link className='btn btn-danger' to="/reservas">Libros Disponibles</Link>
+          <Link className='btn btn-danger' to="/libros">Libros Disponibles</Link>
         ) : null}
 
         {props.firebaseUser !== null  && props.firebaseRol === 'Usuario' ? (
-          <Link className='btn btn-danger' to="/Misreservas">Mis pedidos</Link>
+          <Link className='btn btn-danger' to="/pedidos">Mis pedidos</Link>
         ) : null}
 
         {

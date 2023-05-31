@@ -2,7 +2,7 @@ import React from "react";
 import { auth, db } from "../firebase";
 import { useNavigate } from "react-router-dom";
 
-const Reservas = () => {
+const Libros = () => {
   const navigate = useNavigate();
   const [user, setUser] = React.useState(null);
 
@@ -96,4 +96,4 @@ const Reservas = () => {
   );
 };
 
-export default Reservas;
+export default Libros;

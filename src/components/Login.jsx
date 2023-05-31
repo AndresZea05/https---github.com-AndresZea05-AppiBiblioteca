@@ -9,6 +9,8 @@ const Login = () => {
     const [pass, setPass] = React.useState('')
     const [error, setError] = React.useState(null)
     const [modoRegistro, setModoRegistro] = React.useState(false)
+    const [nombre, setNombre] = React.useState('')
+    const [apellido, setApellido] = React.useState('')
 
     const guardarDatos = (e) => {
         e.preventDefault()
@@ -71,6 +73,7 @@ const Login = () => {
             const res = await auth.createUserWithEmailAndPassword(email, pass)
             await db.collection('Usuarios').doc(res.user.email).set(
                 {
+                    
                     email: res.user.email,
                     id: res.user.uid,
                     Rol: "Usuario"

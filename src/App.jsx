@@ -5,10 +5,10 @@ import Inicio from './components/Inicio';
 import Login from './components/Login';
 import Admin from './components/Admin';
 import Navbar from './components/Navbar';
-import Reservas from './components/Reservas';
+import Reservas from './components/Libros';
 import { auth, db } from './firebase';
-import MisReservas from './components/MisReservas';
-
+import MisReservas from './components/Pedidos';
+import Footer from './components/footer';
 
 function App() {
   const [firebaseUser, setFirebaseUser] = useState(false);
@@ -61,12 +61,15 @@ function App() {
           <Route path='/' element={<Inicio />} />
           <Route path='login' element={<Login />} />
           <Route path='admin' element={<Admin firebaseRol={firebaseRol} />} />
-          <Route path='reservas' element={<Reservas />} />
-          <Route path='Misreservas' element={<MisReservas />} />
+          <Route path='libros' element={<Reservas />} /> 
+          <Route path='pedidos' element={<MisReservas />} />
         </Routes>
         
       </div>
+      <br></br>
+      <Footer/>
     </Router>
+    
   ) : (
     <div class="custom-loader"></div>
   );

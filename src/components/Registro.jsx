@@ -178,7 +178,7 @@ const Registro = () => {
     <div className='Registro-libro'>
       {
         modoedicion ? <h2 className='text-center text-success'>Editando Libro</h2> :
-          <h2 className='text-center text-primary'>Registro Libros</h2>
+          <h2 className='text-center text-danger'>Registro</h2>
       }
 
       <form onSubmit={modoedicion ? editarDatos : guardarDatos}>
@@ -191,7 +191,7 @@ const Registro = () => {
             null
         }
         <input type="text"
-          placeholder='Ingrese el Nombre'
+          placeholder='Ingrese el Titulo'
           className='form-control mb-2'
           onChange={(e) => { setNombre(e.target.value) }}
           value={nombre}
@@ -222,7 +222,7 @@ const Registro = () => {
         <div className='d-grid gap-2'>
           {
             modoedicion ? <button type='submit' className='btn btn-outline-success'>Editar</button> :
-              <button type='submit' className='btn btn-outline-info'>Registrar</button>
+              <button type='submit' className='btn btn-outline-danger'>Registrar</button>
           }
 
         </div>
@@ -233,27 +233,33 @@ const Registro = () => {
       </div>
       </div>
           <br></br>
-      <h2 className='text-center'>Listado de Libros Registrados</h2>
+      
 
      
-      
+      <div className="container">
+    <div className="row justify-content-center mt-5">
+      <div className="col-md-9">
+        <div className="card">
+          <br></br>
+        <h2 className='text-center text-success'>Libros Registrados</h2>
+          <div className="card-header bg- text-white text-center">
       <div className="contenedor-cards">
         
         <div className="card-grid">
           {listaFiltrada.map((elemento) => (
             <div className="card" key={elemento.id}>
               <div className="card-body">
-                <h5 className="card-title">Nombre: {elemento.Nombre}</h5>
+                <h5 className="card-title">Titulo: {elemento.Nombre}</h5>
                 <p className="card-text">Autor: {elemento.Autor}</p>
                 <p className="card-text">Descripción: {elemento.Descripcion}</p>
                 <p className="card-text">Año: {elemento.año}</p>
-                <p className="card-text">Estado: {elemento.Disponibilidad ? "Disponible" : "Reservado"}</p>
+                <p className="card-title">Estado: {elemento.Disponibilidad ? "Disponible" : "Reservado"}</p>
               </div>
               <div className="card-footer">
                 <button onClick={() => eliminarDato(elemento.id)} className="btn btn-danger me-2">
                   Eliminar
                 </button>
-                <button onClick={() => editar(elemento)} className="btn btn-warning me-2">
+                <button onClick={() => editar(elemento)} className="btn btn-success me-2">
                   Editar
                 </button>
               </div>
@@ -261,10 +267,12 @@ const Registro = () => {
           ))}
         </div>
       </div>
-
+      </div>
       
-
-
+      </div>
+      </div>
+      </div>
+      </div>
     </div>
   )
 }
