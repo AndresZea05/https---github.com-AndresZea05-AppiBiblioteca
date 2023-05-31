@@ -68,14 +68,19 @@ const Libros = () => {
 
   return (
     <div>
-      <h3>Mis Libros</h3>
+     <div className="row justify-content-center mt-5">
+      <div className="col-md-9">
+        <div className="card">
+          <br></br>
+       
+          <div className="card-header bg- text-white text-center">
 
       <div className="contenedor-cards">
         <div className="card-grid">
           {lista.map((elemento) => (
             <div className="card" key={elemento.id}>
               <div className="card-body">
-                <h5 className="card-title">Nombre: {elemento.Nombres}</h5>
+                <h5 className="card-title">Titulo: {elemento.Nombres}</h5>
                 <p className="card-text">Autor: {elemento.Autor}</p>
                 <p className="card-text">Descripción: {elemento.Descripcion}</p>
                 <p className="card-text">Año: {elemento.año}</p>
@@ -93,6 +98,11 @@ const Libros = () => {
         </div>
       </div>
     </div>
+    </div>
+    </div>
+      </div>
+    </div>
+    
   );
 };
 

@@ -75,9 +75,12 @@ const Reservas = () => {
 
   return (
     <div>
-      <div className="titulo-seccion">
-        <h3>Libros</h3>
-      </div>
+       <div className="row justify-content-center mt-5">
+      <div className="col-md-9">
+        <div className="card">
+          <br></br>
+       
+          <div className="card-header bg- text-white text-center">
 
       <div className="busqueda">
         <input
@@ -88,6 +91,7 @@ const Reservas = () => {
           onChange={BuscarLibro}
         />
       </div>
+      
 
       <div className="contenedor-cards">
         <div className="card-grid">
@@ -97,7 +101,7 @@ const Reservas = () => {
             listaFiltrada.map((elemento) => (
               <div className="card" key={elemento.id}>
                 <div className="card-body">
-                  <h5 className="card-title">Nombre: {elemento.Nombre}</h5>
+                  <h5 className="card-title">Titulo: {elemento.Nombre}</h5>
                   <p className="card-text">Autor: {elemento.Autor}</p>
                   <p className="card-text">
                     Descripción: {elemento.Descripcion}
@@ -107,7 +111,7 @@ const Reservas = () => {
                 <div className="card-footer">
                   <button
                     onClick={() => ReservarLibro(elemento)}
-                    className="btn btn-primary me-2"
+                    className="btn btn-success me-2"
                   >
                     Reservar
                   </button>
@@ -118,6 +122,11 @@ const Reservas = () => {
         </div>
       </div>
     </div>
+    </div>
+    </div>
+      </div>
+    </div>
+    
   );
 };
 
