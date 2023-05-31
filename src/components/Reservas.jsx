@@ -1,6 +1,6 @@
-import React from 'react';
-import { auth, db } from '../firebase';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { auth, db } from "../firebase";
+import { useNavigate } from "react-router-dom";
 
 const Reservas = () => {
   const navigate = useNavigate();
@@ -9,19 +9,24 @@ const Reservas = () => {
     if (auth.currentUser) {
       setUser(auth.currentUser);
     } else {
-      navigate('/login');
+      navigate("/login");
     }
   }, [navigate]);
 
   const [lista, setLista] = React.useState([]);
-  const [busqueda, setBusqueda] = React.useState('');
+  const [busqueda, setBusqueda] = React.useState("");
 
   React.useEffect(() => {
     const obtenerDatos = async () => {
       try {
-        const data = await db.collection('Libros').get();
-        const arrayData = data.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-        const librosDisponibles = arrayData.filter((libro) => libro.Disponibilidad === true);
+        const data = await db.collection("Libros").get();
+        const arrayData = data.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        const librosDisponibles = arrayData.filter(
+          (libro) => libro.Disponibilidad === true
+        );
         setLista(librosDisponibles);
       } catch (error) {
         console.error(error);
@@ -43,13 +48,15 @@ const Reservas = () => {
         Autor: elemento.Autor,
       });
 
-      await db.collection('Libros').doc(elemento.id).update({
+      await db.collection("Libros").doc(elemento.id).update({
         Disponibilidad: false,
       });
 
       //! AQUI VA UNA ALERTA DE QUE EL LIBRO SE HA RESERVADO
 
-      const listaFiltrada = lista.filter((nuevalista) => nuevalista.id !== elemento.id);
+      const listaFiltrada = lista.filter(
+        (nuevalista) => nuevalista.id !== elemento.id
+      );
       setLista(listaFiltrada);
     } catch (error) {
       console.error(error);
@@ -60,11 +67,11 @@ const Reservas = () => {
     setBusqueda(e.target.value);
   };
 
-
-  const listaFiltrada = lista.filter((elemento) =>
-    elemento.Nombre.toLowerCase().includes(busqueda.toLowerCase())
+  const listaFiltrada = lista.filter(
+    (elemento) =>
+      elemento.Nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
+      elemento.año.toString().includes(busqueda)
   );
-
 
   return (
     <div>
@@ -74,9 +81,9 @@ const Reservas = () => {
 
       <div className="busqueda">
         <input
-          className='form-control'
+          className="form-control"
           type="text"
-          placeholder="Buscar libro"
+          placeholder="Buscar por nombre y por año"
           value={busqueda}
           onChange={BuscarLibro}
         />
@@ -92,7 +99,9 @@ const Reservas = () => {
                 <div className="card-body">
                   <h5 className="card-title">Nombre: {elemento.Nombre}</h5>
                   <p className="card-text">Autor: {elemento.Autor}</p>
-                  <p className="card-text">Descripción: {elemento.Descripcion}</p>
+                  <p className="card-text">
+                    Descripción: {elemento.Descripcion}
+                  </p>
                   <p className="card-text">Año: {elemento.año}</p>
                 </div>
                 <div className="card-footer">
