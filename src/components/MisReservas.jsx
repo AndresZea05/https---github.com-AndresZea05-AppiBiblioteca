@@ -43,7 +43,7 @@ const Reservas = () => {
 
         try {
             const usuario = user.email;
-            await db.collection('libros').doc(elemento.idlibro).update({
+            await db.collection('Libros').doc(elemento.idlibro).update({
                 Disponibilidad: true
             });
 
@@ -51,8 +51,13 @@ const Reservas = () => {
 
             const listaFiltrada = lista.filter(nuevalista => nuevalista.id !== elemento.id);
             setLista(listaFiltrada);
-
-            //! AQUI VA UNA ALERTA DE QUE EL LIBRO SE HA DEVUELTO
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'El libro se ha devuelto',
+                showConfirmButton: false,
+                timer: 1500
+            })
         } catch (error) {
             console.error(error);
         }

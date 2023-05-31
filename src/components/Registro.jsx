@@ -34,7 +34,7 @@ const Registro = () => {
   const guardarDatos = async (e) => {
     e.preventDefault()
     if (!nombre) {
-      setError("Ingrese el Nombre")
+      setError("Ingrese el titulo")
       return
     }
     if (!Autor) {
@@ -118,7 +118,7 @@ const Registro = () => {
   const editarDatos = async (e) => {
     e.preventDefault()
     if (!nombre) {
-      setError("Ingrese el Nombre")
+      setError("Ingrese el titulo")
       return
     }
     if (!Autor) {
@@ -169,6 +169,12 @@ const Registro = () => {
   );
 
   return (
+    
+    <div className="container">
+    <div className="row justify-content-center mt-5">
+      <div className="col-md-9">
+        <div className="card shadow-lg">
+          <div className="card-header bg- text-white text-center">
     <div className='Registro-libro'>
       {
         modoedicion ? <h2 className='text-center text-success'>Editando Libro</h2> :
@@ -221,21 +227,18 @@ const Registro = () => {
 
         </div>
       </form>
-
+      </div>
+          </div>
+        </div>
+      </div>
+      </div>
+          <br></br>
       <h2 className='text-center'>Listado de Libros Registrados</h2>
 
-      <div className="busqueda">
-        <input
-          className='form-control'
-          type="text"
-          placeholder="Buscar libro"
-          value={busqueda}
-          onChange={BuscarLibro}
-        />
-      </div>
-      
+     
       
       <div className="contenedor-cards">
+        
         <div className="card-grid">
           {listaFiltrada.map((elemento) => (
             <div className="card" key={elemento.id}>
@@ -259,7 +262,7 @@ const Registro = () => {
         </div>
       </div>
 
-
+      
 
 
     </div>
