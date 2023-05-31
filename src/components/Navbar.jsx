@@ -15,8 +15,6 @@ const Navbar = (props) => {
     }
   return (
     
-
-   
     <nav class="navbar navbar-danger bg-danger">
        <div class="container-fluid">
         <Link className='navbar-brand' to="/"><img src="./public/cucLogo.png" width="40" height="40" ></img></Link>
@@ -24,15 +22,15 @@ const Navbar = (props) => {
         <div className='d-flex '>
             <Link className='btn btn-danger' to="/">Inicio</Link>
             
-            {props.firebaseUser !== null ? (
+            {props.firebaseUser !== null && props.firebaseRol === 'Admin' ?  (
           <Link className='btn btn-danger' to="/admin">Admin</Link>
         ) : null}
 
-        {props.firebaseUser !== null  ? (
+        {props.firebaseUser !== null  && props.firebaseRol === 'Usuario' ? (
           <Link className='btn btn-danger' to="/reservas">Libros Disponibles</Link>
         ) : null}
 
-        {props.firebaseUser !== null  ? (
+        {props.firebaseUser !== null  && props.firebaseRol === 'Usuario' ? (
           <Link className='btn btn-danger' to="/Misreservas">Mis pedidos</Link>
         ) : null}
 
